@@ -13,7 +13,7 @@ namespace PETDataBase.Domain.Models
 
         public string FullName { get; set; }
         public string Adress { get; set; }
-        public List<string> KeyWords { get; set; }
+        public List<Keyword> KeyWords { get; set; }
 
 
         // Apperance
@@ -24,7 +24,7 @@ namespace PETDataBase.Domain.Models
         public string SkinColor { get; set; }
         public string Ethnicity { get; set; }
         public Nationality Nationality { get; set; }
-        public Bitmap Photo { get; set; }
+        public byte[] Photo { get; set; }
 
 
 

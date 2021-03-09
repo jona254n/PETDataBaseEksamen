@@ -6,7 +6,6 @@ namespace PETDataBase.Domain.Models
 {
     public class Informant : Person
     {
-        
         #region Properties
         public PaymentMethod PaymentMethod { get; set; }
         public Currency Currency { get; set; }
