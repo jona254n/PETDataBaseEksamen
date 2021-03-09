@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PETDataBase.WPF.ViewModels;
 
 namespace PETDataBase.WPF
 {
@@ -20,9 +21,17 @@ namespace PETDataBase.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainViewModel ViewModel { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            ViewModel = new MainViewModel();
+            DataContext = ViewModel;
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Login();
         }
     }
 }

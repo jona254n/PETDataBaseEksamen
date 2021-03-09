@@ -8,5 +8,12 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
+        <ContentControl Content="{Binding CurrentView}"/>
+        
+        <Button x:Name="Login"
+                Content="Login"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="Login_Click"/>
     </Grid>
 </Window>

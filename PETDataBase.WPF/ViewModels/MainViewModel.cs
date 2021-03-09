@@ -50,5 +50,11 @@ namespace PETDataBase.WPF.ViewModels
             }
         }
         #endregion
+        #region Methods
+        public void Login()
+        {
+
+        }
+        #endregion
     }
 }
