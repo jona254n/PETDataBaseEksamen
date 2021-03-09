@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PETDataBase.WPF.ViewModels
 {
-    class MainViewModel
+    public class MainViewModel : ViewModelBase
     {
     }
 }
