@@ -6,10 +6,8 @@ namespace PETDataBase.Domain.Models
 {
     public class Informant : Person
     {
-        public Informant(string userName, string password)
+        public Informant(string @UserName, string @Password)
         {
-            UserName = userName;
-            Password = password;
         }
         #region Properties
         public PaymentMethod PaymentMethod { get; set; }
