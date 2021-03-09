@@ -6,7 +6,7 @@ namespace PETDataBase.Domain.Models
 {
     public class Admin : Agent
     {
-        public Admin(string userName, string password) : base(userName, password)
+        public Admin(string UserName, string Password) : base(UserName, Password)
         {
         }
     }
