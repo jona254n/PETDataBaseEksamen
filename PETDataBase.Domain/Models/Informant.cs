@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PETDataBase.Domain.Models
 {
-    public class Informant
+    public class Informant : Person
     {
         public Informant(string userName, string password)
         {
