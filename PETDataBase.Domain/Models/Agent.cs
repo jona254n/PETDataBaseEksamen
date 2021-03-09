@@ -6,8 +6,6 @@ namespace PETDataBase.Domain.Models
 {
     public class Agent : Informant
     {
-        public Agent(string UserName, string Password) : base(UserName, Password)
-        {
-        }
+        
     }
 }
