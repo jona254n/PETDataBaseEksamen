@@ -23,8 +23,7 @@ namespace PETDataBase.Domain.Models
         public string HairColor { get; set; }
         public string SkinColor { get; set; }
         public string Ethnicity { get; set; }
-        // To be replaced with Nationality model
-        public object Nationality { get; set; }
+        public Nationality Nationality { get; set; }
         public Bitmap Photo { get; set; }
 
 
