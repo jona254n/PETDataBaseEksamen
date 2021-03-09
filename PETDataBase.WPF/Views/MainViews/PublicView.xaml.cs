@@ -18,6 +18,7 @@ namespace PETDataBase.WPF.Views
     /// </summary>
     public partial class PublicView : UserControl
     {
+        public 
         public PublicView()
         {
             InitializeComponent();
