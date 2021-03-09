@@ -1,11 +1,10 @@
-﻿using PETDataBase.Domain.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PETDataBase.Domain.Models
 {
-    public class Observant : Person, IObservant
+    public class Observant : Person
     {
     }
 }
