@@ -1,5 +1,4 @@
-﻿using PETDataBase.Domain.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,7 +14,7 @@ namespace PETDataBase.Domain.Models
         public Informant Author { get; set; }
 
         
-        public IObservant Subject { get; set; }
+        public Subject Subject { get; set; }
         public List<Comment> Comments { get; set; }
         #endregion
     }
