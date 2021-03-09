@@ -12,8 +12,8 @@ namespace PETDataBase.Domain.Models
             Password = password;
         }
         #region Properties
-        public string PaymentMethod { get; set; }
-        public string Currency { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
+        public Currency Currency { get; set; }
         private string UserName { get; set; }
         private string Password { get; set; }
         #endregion
