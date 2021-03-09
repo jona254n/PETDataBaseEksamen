@@ -12,5 +12,9 @@ namespace PETDataBase.Domain.Models
         public string UserName { private get; set; }
         public string Password { private get; set; }
         #endregion
+        #region Methods
+        public bool Login(string userName, string password)
+        => userName == UserName && password == Password;
+        #endregion
     }
 }
