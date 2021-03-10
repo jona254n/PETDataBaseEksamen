@@ -97,6 +97,9 @@ namespace PETDataBase.EntityFramework.Migrations
                     b.Property<int?>("NationalityId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("PaymentMethodId")
                         .HasColumnType("int");
 
@@ -104,6 +107,9 @@ namespace PETDataBase.EntityFramework.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("SkinColor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

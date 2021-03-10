@@ -10,7 +10,7 @@ using PETDataBase.EntityFramework;
 namespace PETDataBase.EntityFramework.Migrations
 {
     [DbContext(typeof(PETDBContext))]
-    [Migration("20210310102758_initial")]
+    [Migration("20210310105341_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,6 +99,9 @@ namespace PETDataBase.EntityFramework.Migrations
                     b.Property<int?>("NationalityId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("PaymentMethodId")
                         .HasColumnType("int");
 
@@ -106,6 +109,9 @@ namespace PETDataBase.EntityFramework.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("SkinColor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
