@@ -13,7 +13,7 @@ namespace PETDataBase.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CurrencyName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CurrencyName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,8 +26,8 @@ namespace PETDataBase.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CountryCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CountryCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NationalityName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -41,7 +41,7 @@ namespace PETDataBase.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PaymentDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PaymentDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,7 +59,7 @@ namespace PETDataBase.EntityFramework.Migrations
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Adress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Height = table.Column<float>(type: "real", nullable: true),
+                    Height = table.Column<float>(type: "real", nullable: false),
                     EyeColor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HairColor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SkinColor = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -97,9 +97,9 @@ namespace PETDataBase.EntityFramework.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AuthorId = table.Column<int>(type: "int", nullable: false),
+                    AuthorId = table.Column<int>(type: "int", nullable: true),
                     LastEdit = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReportId = table.Column<int>(type: "int", nullable: false)
+                    ReportId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -118,7 +118,7 @@ namespace PETDataBase.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    KeyWord = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KeyWord = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     InformantId = table.Column<int>(type: "int", nullable: true),
                     ObservantId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -143,7 +143,8 @@ namespace PETDataBase.EntityFramework.Migrations
                     Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateSubmitted = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AuthorId = table.Column<int>(type: "int", nullable: true),
-                    SubjectId = table.Column<int>(type: "int", nullable: true)
+                    SubjectId = table.Column<int>(type: "int", nullable: true),
+                    ObservantId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -256,6 +257,11 @@ namespace PETDataBase.EntityFramework.Migrations
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reports_ObservantId",
+                table: "Reports",
+                column: "ObservantId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reports_SubjectId",
                 table: "Reports",
                 column: "SubjectId");
@@ -276,6 +282,14 @@ namespace PETDataBase.EntityFramework.Migrations
             migrationBuilder.AddForeignKey(
                 name: "FK_Keyword_Observants_ObservantId",
                 table: "Keyword",
+                column: "ObservantId",
+                principalTable: "Observants",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Reports_Observants_ObservantId",
+                table: "Reports",
                 column: "ObservantId",
                 principalTable: "Observants",
                 principalColumn: "Id",

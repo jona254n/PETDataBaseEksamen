@@ -242,6 +242,9 @@ namespace PETDataBase.EntityFramework.Migrations
                     b.Property<DateTime>("DateSubmitted")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("ObservantId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("SubjectId")
                         .HasColumnType("int");
 
@@ -251,6 +254,8 @@ namespace PETDataBase.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("ObservantId");
 
                     b.HasIndex("SubjectId");
 
@@ -368,6 +373,10 @@ namespace PETDataBase.EntityFramework.Migrations
                         .WithMany()
                         .HasForeignKey("AuthorId");
 
+                    b.HasOne("PETDataBase.Domain.Models.Observant", null)
+                        .WithMany("Reports")
+                        .HasForeignKey("ObservantId");
+
                     b.HasOne("PETDataBase.Domain.Models.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId");
@@ -394,6 +403,8 @@ namespace PETDataBase.EntityFramework.Migrations
             modelBuilder.Entity("PETDataBase.Domain.Models.Observant", b =>
                 {
                     b.Navigation("KeyWords");
+
+                    b.Navigation("Reports");
                 });
 
             modelBuilder.Entity("PETDataBase.Domain.Models.Report", b =>
