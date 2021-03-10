@@ -2,6 +2,7 @@
 using PETDataBase.WPF.Views;
 using PETDataBase.Repository;
 using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -14,33 +15,14 @@ namespace PETDataBase.WPF.ViewModels
         public ObservantViewModel()
         {
             repo = new Repository.Repository();
-            //Admin admin = new Admin()
-            //{
-            //    FullName = "Admin",
-            //    UserName = "admin",
-            //    Password = ""
-            //};
-            //repo.Add(admin);
-            //Agent agent = new Agent()
-            //{
-            //    FullName = "Agent",
-            //    UserName = "agent",
-            //    Password = ""
-            //};
-            //repo.Add(agent);
-            //Informant informant = new Informant()
-            //{
-            //    FullName = "Informant",
-            //    UserName = "informant",
-            //    Password = ""
-            //};
-            //repo.Add(informant);
+
             Update();
         }
         #region Fields
         private Observant _selectedObservant;
         #endregion
         #region Properties
+        public Visibility ButtonVisibility { get; set; } = Visibility.Hidden;
         public bool IsReadOnly { get; protected set; } = true;
 
         public ObservableCollection<Observant> Observants { get; set; }
@@ -91,26 +73,32 @@ namespace PETDataBase.WPF.ViewModels
         public FullAccesObservantViewModel()
         {
             IsReadOnly = false;
+            ButtonVisibility = Visibility.Visible;
         }
         #region Overrides
         public override void Add()
         {
             repo.Add((Observant)PersonDisplay.DisplayModel.Person);
+            Update();
         }
 
         public override void Delete()
         {
             repo.Delete((Observant)PersonDisplay.DisplayModel.Person);
+            Update();
         }
 
         public override void Edit()
         {
             repo.Edit((Observant)PersonDisplay.DisplayModel.Person);
+            Update();
         }
 
         public override void New()
         {
-            PersonDisplay.DisplayModel.Person = new Observant();
+
+            SelectedObservant = new Observant();
+            Update();
         }
         #endregion
     }

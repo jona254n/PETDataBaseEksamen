@@ -26,5 +26,25 @@ namespace PETDataBase.WPF.Views
             ViewModel = viewModel;
             DataContext = ViewModel;
         }
+
+        private void Ny_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.New();
+        }
+
+        private void Gem_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Add();
+        }
+
+        private void Rediger_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Edit();
+        }
+
+        private void Slet_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Delete();
+        }
     }
 }

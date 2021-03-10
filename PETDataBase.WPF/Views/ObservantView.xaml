@@ -14,6 +14,72 @@
         </Grid.ColumnDefinitions>
 
         <ContentControl Content="{Binding PersonDisplay}"/>
+        <Grid Height="25"
+              VerticalAlignment="Top"
+              Visibility="{Binding ButtonVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Ny"
+                    Name="Ny"
+                    Margin="2,2,2,2"
+                    Click="Ny_Click"/>
+            <Button Content="Gem"
+                    Name="Gem"
+                    Margin="2,2,2,2"
+                    Grid.Column="1"
+                    Click="Gem_Click"/>
+            <Button Content="Rediger"
+                    Name="Rediger"
+                    Margin="2,2,2,2"
+                    Grid.Column="2"
+                    Click="Rediger_Click"/>
+            <Button Content="Slet"
+                    Name="Slet"
+                    Margin="2,2,2,2"
+                    Grid.Column="3"
+                    Click="Slet_Click"/>
+
+        </Grid>
+
+            <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+
+            <DataGrid ItemsSource="{Binding SelectedObservant.Reports}"
+                      SelectedItem="{Binding SelectedReport}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Titel"
+                                        Width="1*"
+                                        Binding="{Binding Title}"/>
+                    <DataGridTextColumn Header="Dato"
+                                        Width="1*"
+                                        Binding="{Binding DateSubmitted}"/>
+                    <DataGridTextColumn Header="Skrevet af:"
+                                        Width="2*"
+                                        Binding="{Binding Author}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBlock Text="{Binding SelectedReport.Title}"
+                       Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="24"/>
+            
+            <TextBlock Text="{Binding SelectedReport.Body}"
+                       Grid.Row="2"
+                       TextWrapping="Wrap"/>
+
+        </Grid>
+        
 
         <DataGrid ItemsSource="{Binding Observants}"
                   SelectedItem="{Binding SelectedObservant}"
