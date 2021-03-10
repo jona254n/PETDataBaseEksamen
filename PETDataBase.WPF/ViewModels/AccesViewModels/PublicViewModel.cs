@@ -16,6 +16,8 @@ namespace PETDataBase.WPF.ViewModels
         #region Views
         public ObservantView ObservantView { get; set; }
         #endregion
+
+
         #region Tab Visibility
 
         public Visibility GroupVisibility { get; protected set; } = Visibility.Hidden;
