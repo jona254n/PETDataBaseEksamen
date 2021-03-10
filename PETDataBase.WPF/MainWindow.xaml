@@ -8,7 +8,37 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <ContentControl Content="{Binding CurrentView}"/>
+        <TabControl DataContext="{Binding TabAccesViewModel}">
+            
+            <TabItem Header="Observanter">
+                <ContentControl Content="{Binding ObservantView}"/>
+            </TabItem>
+            
+            <TabItem Header="Grupper" 
+                     Visibility="{Binding GroupVisibility}">
+                
+                <ContentControl Content="{Binding GroupView}"/>
+            </TabItem>
+            
+            <TabItem Header="Rapporter" 
+                     Visibility="{Binding ReportVisibility}">
+                
+                <ContentControl Content="{Binding ReportView}"/>
+            </TabItem>
+            
+            <TabItem Header="Informanter" 
+                     Visibility="{Binding InformantVisibility}">
+                
+                <ContentControl Content="{Binding InformantView}"/>
+            </TabItem>
+            
+            <TabItem Header="Observanter" 
+                     Visibility="{Binding AgentVisibility}">
+                
+                <ContentControl Content="{Binding AgentView}"/>
+            </TabItem>
+            
+        </TabControl>
         
         <Button x:Name="Login"
                 Content="Login"

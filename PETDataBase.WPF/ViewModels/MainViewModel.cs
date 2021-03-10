@@ -4,12 +4,13 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using PETDataBase.Domain.Models;
+using PETDataBase.WPF.Models;
 using PETDataBase.WPF.Views;
 using PETDataBase.WPF.Views.Windows;
 
 namespace PETDataBase.WPF.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ObservableObject 
     {
         #region Fields
         /// <summary>
