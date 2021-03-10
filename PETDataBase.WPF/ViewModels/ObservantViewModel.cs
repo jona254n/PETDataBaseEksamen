@@ -44,17 +44,10 @@ namespace PETDataBase.WPF.ViewModels
             set
             {
                 _selectedObservant = value;
-                if(PersonDisplay == null)
-                {
-                    PersonDisplay = new PersonDisplay(new PersonDisplayViewModel(IsReadOnly, value));
-                    OnPropertyChanged("PersonDisplay");
-                }
-                else
-                {
-                    PersonDisplay.DisplayModel = new PersonDisplayViewModel(IsReadOnly, value);
 
-                    OnPropertyChanged("DisplayModel");
-                }
+                PersonDisplay = new PersonDisplay(new PersonDisplayViewModel(IsReadOnly, value));
+
+                OnPropertyChanged("PersonDisplay");
                 OnPropertyChanged("SelectedObservant");
             }
         }
@@ -69,7 +62,7 @@ namespace PETDataBase.WPF.ViewModels
         public void Update()
         {
             Observants = new ObservableCollection<Observant>(repo.GetAll<Observant>());
-            //OnPropertyChanged("Observants");
+            OnPropertyChanged("Observants");
         }
 
         #endregion
@@ -92,6 +85,7 @@ namespace PETDataBase.WPF.ViewModels
         {
             repo.Add((Observant)PersonDisplay.DisplayModel.Person);
             Update();
+            SelectedObservant = Observants[Observants.Count-1];
         }
 
         public override void Delete()

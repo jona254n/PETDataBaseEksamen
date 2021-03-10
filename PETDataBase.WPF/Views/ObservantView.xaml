@@ -54,7 +54,7 @@
             </Grid.RowDefinitions>
 
             <DataGrid ItemsSource="{Binding SelectedObservant.Reports}"
-                      SelectedItem="{Binding SelectedReport}">
+                      SelectedItem="{Binding SelectedReport, UpdateSourceTrigger=PropertyChanged}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Titel"
                                         Width="1*"
@@ -82,7 +82,7 @@
         
 
         <DataGrid ItemsSource="{Binding Observants}"
-                  SelectedItem="{Binding SelectedObservant}"
+                  SelectedItem="{Binding SelectedObservant, UpdateSourceTrigger=PropertyChanged}"
                   Grid.Column="2"
                   AutoGenerateColumns="False"
                   IsReadOnly="True">
