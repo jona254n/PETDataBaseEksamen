@@ -12,6 +12,13 @@ namespace PETDataBase.WPF.ViewModels
 {
     public class MainViewModel : ObservableObject 
     {
+        private Repository.Repository repo;
+        public MainViewModel()
+        {
+            repo = new Repository.Repository();
+            Update();
+        }
+
         #region Fields
         /// <summary>
         /// Private field for <see cref="CurrentUser"/>
@@ -59,9 +66,9 @@ namespace PETDataBase.WPF.ViewModels
 
             }
         }
-        
-        public string UserName { get; set; }
-        public string Password { get; set; }
+
+        public string UserName { get; set; } = "";
+        public string Password { get; set; } = "";
 
         #endregion
         #region Methods
@@ -94,6 +101,15 @@ namespace PETDataBase.WPF.ViewModels
                 MessageBox.Show("Forkert adgangskode eller brugernavn");
 
             sender.Close();
+        }
+        /// <summary>
+        /// Updates <see cref="Employees"/>
+        /// </summary>
+        public void Update()
+        {
+            Employees = new List<Informant>(repo.GetAll<Informant>());
+            Employees.AddRange(repo.GetAll<Agent>());
+            Employees.AddRange(repo.GetAll<Admin>());
         }
 
         #endregion

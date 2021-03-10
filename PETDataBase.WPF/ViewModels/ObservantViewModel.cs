@@ -10,19 +10,31 @@ namespace PETDataBase.WPF.ViewModels
 {
     public class ObservantViewModel : ViewModelBase
     {
-        private Repository.Repository repo;
+        protected Repository.Repository repo;
         public ObservantViewModel()
         {
             repo = new Repository.Repository();
-            Observant ob = new Observant()
-            {
-                FullName = "testperson1",
-                HairColor = "Brown",
-                EyeColor = "Brown",
-                Height = 1.83f,
-                SkinColor = "White"
-            };
-            //repo.Add(ob);
+            //Admin admin = new Admin()
+            //{
+            //    FullName = "Admin",
+            //    UserName = "admin",
+            //    Password = ""
+            //};
+            //repo.Add(admin);
+            //Agent agent = new Agent()
+            //{
+            //    FullName = "Agent",
+            //    UserName = "agent",
+            //    Password = ""
+            //};
+            //repo.Add(agent);
+            //Informant informant = new Informant()
+            //{
+            //    FullName = "Informant",
+            //    UserName = "informant",
+            //    Password = ""
+            //};
+            //repo.Add(informant);
             Update();
         }
         #region Fields
@@ -70,6 +82,8 @@ namespace PETDataBase.WPF.ViewModels
         #region Virtual Methods
         public virtual void Add() { }
         public virtual void Delete() { }
+        public virtual void Edit() { }
+        public virtual void New() { }
         #endregion
     }
     public class FullAccesObservantViewModel : ObservantViewModel
@@ -78,5 +92,26 @@ namespace PETDataBase.WPF.ViewModels
         {
             IsReadOnly = false;
         }
+        #region Overrides
+        public override void Add()
+        {
+            repo.Add((Observant)PersonDisplay.DisplayModel.Person);
+        }
+
+        public override void Delete()
+        {
+            repo.Delete((Observant)PersonDisplay.DisplayModel.Person);
+        }
+
+        public override void Edit()
+        {
+            repo.Edit((Observant)PersonDisplay.DisplayModel.Person);
+        }
+
+        public override void New()
+        {
+            PersonDisplay.DisplayModel.Person = new Observant();
+        }
+        #endregion
     }
 }

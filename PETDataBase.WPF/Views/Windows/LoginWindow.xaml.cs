@@ -28,7 +28,7 @@ namespace PETDataBase.WPF.Views.Windows
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.TryLogIn(this);
         }
     }
 }
