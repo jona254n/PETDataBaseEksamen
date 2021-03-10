@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <TabControl DataContext="{Binding TabAccesViewModel}">
+        <TabControl DataContext="{Binding CurrentViewModel}">
             
             <TabItem Header="Observanter">
                 <ContentControl Content="{Binding ObservantView}"/>
@@ -32,7 +32,7 @@
                 <ContentControl Content="{Binding InformantView}"/>
             </TabItem>
             
-            <TabItem Header="Observanter" 
+            <TabItem Header="Agenter" 
                      Visibility="{Binding AgentVisibility}">
                 
                 <ContentControl Content="{Binding AgentView}"/>

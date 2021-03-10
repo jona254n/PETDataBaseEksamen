@@ -33,13 +33,13 @@ namespace PETDataBase.WPF.ViewModels
             set
             {
                 _currentUser = value;
-                OnPropertyChanged("CurrentView");
+                OnPropertyChanged("CurrentViewModel");
             }
         }
         /// <summary>
-        /// Returns View depending on <see cref="CurrentUser"/>
+        /// Returns ViewModel depending on <see cref="CurrentUser"/>
         /// </summary>
-        public UserControl CurrentView
+        public PublicViewModel CurrentViewModel
         {
             get
             {
@@ -48,18 +48,18 @@ namespace PETDataBase.WPF.ViewModels
                     switch(CurrentUser)
                     {
                         case Admin a:
-                            return new AdminView();
+                            return new AdminViewModel();
                         case Agent ag:
-                            return new AgentView();
+                            return new AgentViewModel();
                         case Informant i:
-                            return new InformantView();
+                            return new InformantViewModel();
                     }
                 }
-                return new PublicView();
+                return new PublicViewModel();
 
             }
         }
-
+        
         public string UserName { get; set; }
         public string Password { get; set; }
 
