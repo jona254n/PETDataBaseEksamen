@@ -13,6 +13,11 @@ namespace PETDataBase.WPF.ViewModels
         {
             InformantVisibility = Visibility.Visible;
             ReportView = new ReportView(new FullAccesReportViewModel(user));
+            InformantView = new InformantView();
         }
+        #region Views
+        public InformantView InformantView 
+        { get; set; }
+        #endregion
     }
 }
