@@ -20,10 +20,21 @@ namespace PETDataBase.WPF.ViewModels
         }
         #region Fields
         private Observant _selectedObservant;
+        private Report _selectedReport;
         #endregion
         #region Properties
         public Visibility ButtonVisibility { get; set; } = Visibility.Hidden;
         public bool IsReadOnly { get; protected set; } = true;
+
+        public Report SelectedReport
+        {
+            get => _selectedReport;
+            set
+            {
+                _selectedReport = value;
+                OnPropertyChanged("SelectedReport");
+            }
+        }
 
         public ObservableCollection<Observant> Observants { get; set; }
 
@@ -44,6 +55,7 @@ namespace PETDataBase.WPF.ViewModels
 
                     OnPropertyChanged("DisplayModel");
                 }
+                OnPropertyChanged("SelectedObservant");
             }
         }
         
