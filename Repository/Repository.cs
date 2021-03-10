@@ -8,7 +8,12 @@ namespace PETDataBase.Repository
 {
     public class Repository
     {
-        private PETDBContext dataContext => new PETDBContext();
+        private PETDBContext dataContext;
+
+        public Repository()
+        {
+            dataContext = new PETDBContext();
+        }
 
         #region Methods
         public void Add<T>(T entity) where T : DomainObject

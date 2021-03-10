@@ -13,7 +13,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ContentControl Content="{Binding Display}"/>
+        <ContentControl Content="{Binding PersonDisplay}"/>
 
         <DataGrid ItemsSource="{Binding Observants}"
                   SelectedItem="{Binding SelectedObservant}"
@@ -23,7 +23,7 @@
 
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Name"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding FullName}"/>
 
             </DataGrid.Columns>
             

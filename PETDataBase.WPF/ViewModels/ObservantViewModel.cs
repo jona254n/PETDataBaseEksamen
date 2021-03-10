@@ -1,5 +1,6 @@
 ﻿using PETDataBase.Domain.Models;
 using PETDataBase.WPF.Views;
+using PETDataBase.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +10,21 @@ namespace PETDataBase.WPF.ViewModels
 {
     public class ObservantViewModel : ViewModelBase
     {
-
+        private Repository.Repository repo;
+        public ObservantViewModel()
+        {
+            repo = new Repository.Repository();
+            Observant ob = new Observant()
+            {
+                FullName = "testperson1",
+                HairColor = "Brown",
+                EyeColor = "Brown",
+                Height = 1.83f,
+                SkinColor = "White"
+            };
+            //repo.Add(ob);
+            Update();
+        }
         #region Fields
         private Observant _selectedObservant;
         #endregion
@@ -27,16 +42,30 @@ namespace PETDataBase.WPF.ViewModels
                 if(PersonDisplay == null)
                 {
                     PersonDisplay = new PersonDisplay(new PersonDisplayViewModel(IsReadOnly, value));
+                    OnPropertyChanged("PersonDisplay");
                 }
                 else
                 {
                     PersonDisplay.DisplayModel = new PersonDisplayViewModel(IsReadOnly, value);
+
                     OnPropertyChanged("DisplayModel");
                 }
             }
         }
         
         public PersonDisplay PersonDisplay { get; set; }
+        #endregion
+        #region Methods
+
+        /// <summary>
+        /// Updates <see cref="Observants"/>
+        /// </summary>
+        public void Update()
+        {
+            Observants = new ObservableCollection<Observant>(repo.GetAll<Observant>());
+            //OnPropertyChanged("Observants");
+        }
+
         #endregion
         #region Virtual Methods
         public virtual void Add() { }
