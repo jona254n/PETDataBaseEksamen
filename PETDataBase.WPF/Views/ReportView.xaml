@@ -67,6 +67,7 @@
             </ComboBox>
             <ComboBox ItemsSource="{Binding Observants}"
                       SelectedValue="{Binding SelectedObservant}"
+                      DisplayMemberPath="FullName"
                       Grid.Row="2"
                       Margin="105,5,5,5"/>
 
@@ -116,7 +117,14 @@
 
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Name" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Navn"
+                                    Binding="{Binding Subject.Observant.FullName}"/>
+
+                <DataGridTextColumn Header="Dato"
+                                    Binding="{Binding DateSubmitted}"/>
+
+                <DataGridTextColumn Header="Skrevet af"
+                                    Binding="{Binding Author}"/>
 
             </DataGrid.Columns>
 

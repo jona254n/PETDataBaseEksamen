@@ -14,7 +14,8 @@ namespace PETDataBase.WPF.ViewModels
         {
             CurrentUser = User;
             repo = new Repository.Repository();
-            Update();
+            UpdateReports();
+            UpdateObservants();
         }
         #region Fields
         private Report _selectedReport;
@@ -23,6 +24,34 @@ namespace PETDataBase.WPF.ViewModels
 
         public Visibility CommentVisibility { get; protected set; } = Visibility.Hidden;
 
+        public ObservableCollection<Observant> Observants { get; set; }
+
+        public Observant SelectedObservant
+        {
+            get
+            {
+                if(SelectedReport != null)
+                {
+                    return SelectedReport.Subject.Observant;
+                }
+                else
+                {
+                    return null;
+                }
+                
+            }
+            set
+            {
+                if(SelectedReport == null)
+                {
+                    SelectedReport = new Report();
+                }
+
+                SelectedReport.Subject = new Subject() { Observant = value };
+                
+                OnPropertyChanged("SelectedObservant");
+            }
+        }
 
         public ObservableCollection<Report> Reports { get; set; }
 
@@ -41,7 +70,12 @@ namespace PETDataBase.WPF.ViewModels
         #endregion
 
         #region Methods
-        public void Update()
+        public void UpdateObservants()
+        {
+            Observants = new ObservableCollection<Observant>(repo.GetAll<Observant>());
+            OnPropertyChanged("Observants");
+        }
+        public void UpdateReports()
         {
             Reports = new ObservableCollection<Report>(repo.GetAll<Report>());
             OnPropertyChanged("Reports");
@@ -52,20 +86,35 @@ namespace PETDataBase.WPF.ViewModels
         }
         public void Add()
         {
-            repo.Add(SelectedReport);
-            Update();
+            //Sets Author of report
+            SelectedReport.Author = CurrentUser;
+
+            //Sets DateSubmitted to current time
+            SelectedReport.DateSubmitted = DateTime.Now;
+
+            //Sets SelectedObservants list if it is null
+            if(SelectedObservant.Reports == null)
+            {
+                SelectedObservant.Reports = new List<Report>();
+            }
+
+            //Adds SelectedReport to SelectedObservants reports
+            SelectedObservant.Reports.Add(SelectedReport);
+
+            repo.Edit(SelectedObservant);
+            UpdateReports();
             SelectedReport = Reports[Reports.Count - 1];
         }
         public void Delete()
         {
             repo.Delete(SelectedReport);
-            Update();
+            UpdateReports();
             SelectedReport = new Report();
         }
         public void Edit()
         {
             repo.Edit(SelectedReport);
-            Update();
+            UpdateReports();
         }
         #endregion
     }

@@ -54,12 +54,12 @@ namespace PETDataBase.WPF.ViewModels
                 {
                     switch(CurrentUser)
                     {
-                        case Admin a:
-                            return new AdminViewModel();
-                        case Agent ag:
-                            return new AgentViewModel();
-                        case Informant i:
-                            return new InformantViewModel();
+                        case Admin _:
+                            return new AdminViewModel((Admin)CurrentUser);
+                        case Agent _:
+                            return new AgentViewModel((Agent)CurrentUser);
+                        case Informant _:
+                            return new InformantViewModel(CurrentUser);
                     }
                 }
                 return new PublicViewModel();
