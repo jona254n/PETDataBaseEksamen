@@ -10,7 +10,7 @@ namespace PETDataBase.WPF.ViewModels
     {
         public PublicViewModel()
         {
-            ObservantView = new ObservantView();
+            ObservantView = new ObservantView(new ObservantViewModel());
 
         }
         #region Views

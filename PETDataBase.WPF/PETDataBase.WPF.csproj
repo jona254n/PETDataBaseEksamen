@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PETDataBase.Domain\PETDataBase.Domain.csproj" />
+    <ProjectReference Include="..\Repository\PETDataBase.Repository.csproj" />
   </ItemGroup>
 
 </Project>

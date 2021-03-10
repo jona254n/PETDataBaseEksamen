@@ -4,7 +4,7 @@ using System.Text;
 using PETDataBase.Domain.Models;
 using PETDataBase.EntityFramework;
 
-namespace Repository
+namespace PETDataBase.Repository
 {
     public class Repository
     {

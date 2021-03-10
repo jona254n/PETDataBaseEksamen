@@ -65,6 +65,7 @@ namespace PETDataBase.WPF.ViewModels
 
         #endregion
         #region Methods
+
         /// <summary>
         /// Opens Login window
         /// </summary>
@@ -75,6 +76,12 @@ namespace PETDataBase.WPF.ViewModels
             login.Show();
         }
 
+        /// <summary>
+        /// Tries to log in
+        /// </summary>
+        /// <param name="sender">
+        /// The Login Window the call came from
+        /// </param>
         public void TryLogIn(LoginWindow sender)
         {
             
@@ -88,6 +95,7 @@ namespace PETDataBase.WPF.ViewModels
 
             sender.Close();
         }
+
         #endregion
     }
 }

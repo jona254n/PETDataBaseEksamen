@@ -9,6 +9,7 @@ namespace PETDataBase.WPF.ViewModels
 {
     public class ObservantViewModel : ViewModelBase
     {
+
         #region Fields
         private Observant _selectedObservant;
         #endregion

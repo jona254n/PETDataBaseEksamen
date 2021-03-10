@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PETDataBase.EntityFramework
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PETDataBase.WPF", "..\PETDataBase.WPF\PETDataBase.WPF.csproj", "{CA6E0B17-6EF7-472C-802A-6BB178F5C12D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "..\Repository\Repository.csproj", "{EA191ABE-F3E8-48F8-AACA-D3E1F832854E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PETDataBase.Repository", "..\Repository\PETDataBase.Repository.csproj", "{EA191ABE-F3E8-48F8-AACA-D3E1F832854E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
