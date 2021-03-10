@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PETDataBase.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +19,12 @@ namespace PETDataBase.WPF.Views
     /// </summary>
     public partial class ObservantView : UserControl
     {
-        public ObservantView()
+        public ObservantViewModel ViewModel { get; set; }
+        public ObservantView(ObservantViewModel viewModel)
         {
             InitializeComponent();
+            ViewModel = viewModel;
+            DataContext = ViewModel;
         }
     }
 }
